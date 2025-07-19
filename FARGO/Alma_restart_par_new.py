@@ -19,7 +19,7 @@ offset = 1500 # Offset de simulación
 
 for sim in range(N):
     
-    org_par_file = 'setups/Alma_Vidal_new/Alma_Vidal_new{:d}.par'.format(sim+offset)
+    org_par_file = 'setups/Alma_Vidal_new/Alma_Vidal_new_{:d}.par'.format(sim+offset)
     res_par_file = 'setups/Alma_Vidal_new/Alma_restart_new_{:d}.par'.format(sim+offset)
     os.system('cp '+org_par_file+' '+res_par_file)
     
