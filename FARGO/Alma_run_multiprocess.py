@@ -1,7 +1,7 @@
 ### Deja corriendo multiples simulaciones de fargo en paralelo pero en el enfoque secuencial de fargo
-### para make SETUP=fargo PARALLEL=0 GPU=0
+### para make SETUP=Alma_Vidal_new PARALLEL=0 GPU=0
 
-### Antes de usarse se debe correr el 'make SETUP=fargo PARALLEL=0 GPU=0'
+### Antes de usarse se debe correr el 'make SETUP=Alma_Vidal_new PARALLEL=0 GPU=0'
 import subprocess
 from multiprocessing import Pool
 
