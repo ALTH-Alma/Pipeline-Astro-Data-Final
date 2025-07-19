@@ -1,9 +1,13 @@
+#### Script que crea archivos .par con diferentes configuraciones para simulaciones de discos
+### usa definicion de parametros aleatoriamente con distribuciones
+### crea configuraciones de planetas que se guardan en la carpeta planets
+
 import fileinput, sys, random, shutil, subprocess, os
 import numpy as np
 
 # Parameters
-N = 5000 # Número de simulaciones
-offset = 2500 # Offset de la simulación
+N = 100 # Número de simulaciones
+offset = 0 # Offset de la simulación
 aspect_ratios = np.random.normal(0.05,0.025,N)
 sigma0s = 10**np.random.normal(-3,0.5,N)
 sigmaslopes = np.random.uniform(0.5,1.5,N)
