@@ -1,13 +1,15 @@
+### Deja corriendo multiples simulaciones de fargo en paralelo pero en el enfoque secuencial de fargo
+### para make SETUP=fargo PARALLEL=0 GPU=0
+
 import subprocess
 from multiprocessing import Pool
 
-device = 1 
 N = 96
 offset = 304
 
 def run_simulation(sim):
     new_par_file = 'setups/Alma_Vidal/Alma_Vidal_{:d}.par'.format(sim+offset)
-    subprocess.run(["time", "./fargo3d", "-D", str(device), new_par_file])
+    subprocess.run(["time", "./fargo3d", new_par_file])
 
 if __name__ == '__main__':
     
