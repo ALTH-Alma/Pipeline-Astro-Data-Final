@@ -10,7 +10,7 @@ N = 96 # Número de simulaciones
 offset = 0 # Offset de simulación
 
 def run_simulation(sim):
-    new_par_file = 'setups/Alma_Vidal/Alma_Vidal_{:d}.par'.format(sim+offset)
+    new_par_file = 'setups/Alma_Vidal_new/Alma_Vidal_new_{:d}.par'.format(sim+offset)
     subprocess.run(["time", "./fargo3d", new_par_file])
 
 if __name__ == '__main__':
