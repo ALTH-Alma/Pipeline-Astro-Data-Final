@@ -2,6 +2,7 @@
 ### para make SETUP=Alma_Vidal_new PARALLEL=0 GPU=0
 
 ### Antes de usarse se debe correr el 'make SETUP=Alma_Vidal_new PARALLEL=0 GPU=0'
+
 import subprocess
 from multiprocessing import Pool
 
