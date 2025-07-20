@@ -1,19 +1,24 @@
+## Corre el restart de la configuración en paralelo de FARGO
+
 import subprocess
-from multiprocessing import Pool
+import time
 
-device = 0
-N = 500
-offset = 1500
-restart_file = 1
+N = 100 # Número de simulaciones
+offset = 0 # Offset de simulación
+restart_file = 1 # Archivo de salida de la simulacion desde el cual se inicia el restart
 
-pool = 100
+np = 30  # Núcleos por simulación
 
 def run_simulation(sim):
-    new_par_file = 'setups/Alma_Vidal_new/Alma_restart_new_{:d}.par'.format(sim+offset)
-    subprocess.run(["time", "./fargo3d", "-D", str(device), "-S", str(restart_file), new_par_file])
+    new_par_file = 'setups/Alma_Vidal_new/Alma_restart_new_{:d}.par'.format(sim)
+    subprocess.run(["mpirun", "-np", str(np), "./fargo3d", "-S", str(restart_file), new_par_file], check=True)
 
-if __name__ == '__main__':
-    
-    with Pool(pool) as p:
-       
-        p.map(run_simulation, range(N))
+start = time.time()
+
+for sim in range(N):
+    sim_id = sim + offset
+    print(f"Ejecutando simulación {sim_id}...")
+    run_simulation(sim_id)
+
+end = time.time()
+print(f"Tiempo total: {end - start:.2f} segundos")
