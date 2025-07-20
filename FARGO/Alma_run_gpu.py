@@ -10,18 +10,18 @@ N = 100 # Número de simulaciones
 offset = 0 # Offset de simulación
 
 def run_simulation(sim):
+    intStart = time.time()
     new_par_file = f'setups/Alma_Vidal_new/Alma_Vidal_new_{sim}.par'
-    subprocess.run(["time", "./fargo3d", new_par_file])
+    subprocess.run(["time", "./fargo3d", new_par_file], check=True)
+    intEnd = time.time()
+    print(f"Tiempo total por simulación: {intEnd - intStart:.2f} segundos")
 
 start = time.time()
 
 for sim in range(N):
     sim_id = sim + offset
     print(f"Ejecutando simulación {sim_id}...")
-    intStart = time.time()
     run_simulation(sim_id)
-    intEnd = time.time()
-    print(f"Tiempo total por simulación: {intEnd - intStart:.2f} segundos")
 
 end = time.time()
 print(f"Tiempo total: {end - start:.2f} segundos")
