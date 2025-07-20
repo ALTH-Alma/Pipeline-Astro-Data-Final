@@ -18,7 +18,10 @@ start = time.time()
 for sim in range(N):
     sim_id = sim + offset
     print(f"Ejecutando simulación {sim_id}...")
+    intStart = time.time()
     run_simulation(sim_id)
+    intEnd = time.time()
+    print(f"Tiempo total por simulación: {intEnd - intStart:.2f} segundos")
 
 end = time.time()
 print(f"Tiempo total: {end - start:.2f} segundos")
