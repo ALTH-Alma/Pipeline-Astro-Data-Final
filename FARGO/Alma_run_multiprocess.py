@@ -5,13 +5,17 @@
 
 import subprocess
 from multiprocessing import Pool
+import time
 
 N = 96 # Número de simulaciones
 offset = 0 # Offset de simulación
 
 def run_simulation(sim):
     new_par_file = 'setups/Alma_Vidal_new/Alma_Vidal_new_{:d}.par'.format(sim+offset)
-    subprocess.run(["time", "./fargo3d", new_par_file])
+    intStart = time.time() 
+    subprocess.run(["time", "./fargo3d", new_par_file], check=True)
+    intEnd = time.time() 
+    print(f"Simulación {sim+offset} completada en {intEnd - intStart:.2f} segundos")
 
 if __name__ == '__main__':
     
