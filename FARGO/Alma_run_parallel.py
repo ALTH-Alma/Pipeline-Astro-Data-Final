@@ -13,8 +13,12 @@ offset = 0 # Offset de simulación
 np = 30  # Núcleos por simulación
 
 def run_simulation(sim):
+    intStart = time.time() 
     new_par_file = f'setups/Alma_Vidal_new/Alma_Vidal_new_{sim}.par'
     subprocess.run(["mpirun", "-np", str(np), "./fargo3d", new_par_file], check=True)
+    intEnd = time.time() 
+    rint(f"Simulación {sim+offset} completada en {intEnd - intStart:.2f} segundos")
+
 
 start = time.time()
 
